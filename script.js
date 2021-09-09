@@ -1,4 +1,4 @@
-window.onload = () => {
+window.onload = function() {
     const button = document.querySelector('button[data-action="change"]');
     button.innerText = '?';
 
@@ -61,12 +61,6 @@ var setModel = function(model, entity){
     div.textContent = model.info;
 };
 
-function DoThis(){
-    var entity = document.querySelector('[gps-entity-place]');
-    modelIndex++;
-    var newIndex = modelIndex % models.length;
-    setModel(models[newIndex], entity); 
-}
 function renderPlaces(places) {
     let scene = document.querySelector('a-scene');
 
@@ -81,13 +75,13 @@ function renderPlaces(places) {
 
         model.setAttribute('animation-mixer', '');
 
-       // document.querySelector('button[data-action="change"]').addEventListener('click', function(){
-       //    var entity = document.querySelector('[gps-entity-place]');
-       //    modelIndex++;
-       //    var newIndex = modelIndex % models.length;
-       //    setModel(models[newIndex], entity); 
-       // });
-        document.querySelector('button[data-action="change"]').addEventListener('click', DoThis);
+        document.querySelector('button[data-action="change"]').addEventListener('click', function(){
+           var entity = document.querySelector('[gps-entity-place]');
+           modelIndex++;
+           var newIndex = modelIndex % models.length;
+           setModel(models[newIndex], entity); 
+        });
+
         scene.appendChild(model);
     });
 }

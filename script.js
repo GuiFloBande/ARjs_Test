@@ -3,7 +3,7 @@ window.onload = function() {
     button.innerText = '?';
 
     let places = staticLoadPlaces();
-    renderPlaces(places);
+    renderPlaces(places, button);
 };
 
 function staticLoadPlaces() {
@@ -61,7 +61,7 @@ var setModel = function(model, entity){
     div.textContent = model.info;
 };
 
-function renderPlaces(places) {
+function renderPlaces(places, btn) {
     let scene = document.querySelector('a-scene');
 
     places.forEach((place) => {
@@ -75,7 +75,8 @@ function renderPlaces(places) {
 
         model.setAttribute('animation-mixer', '');
 
-        document.querySelector('button[data-action="change"]').addEventListener('click', function(){
+        //document.querySelector('button[data-action="change"]').addEventListener('click', function(){
+        btn.addEventListener('click', function(){
            var entity = document.querySelector('[gps-entity-place]');
            modelIndex++;
            var newIndex = modelIndex % models.length;

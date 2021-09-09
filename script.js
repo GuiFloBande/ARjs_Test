@@ -56,7 +56,7 @@ var setModel = function(model, entity){
 
     entity.setAttribute('gltf-model', model.url);
 
-    const div = document.querySelector('.centered');
+    const div = document.querySelector('.instructions');
     //div.innerText = model.info;
     div.textContent = model.info;
 };

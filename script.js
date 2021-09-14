@@ -23,21 +23,21 @@ var models = [
         url: './assets/magnemite/scene.gltf',
         scale: '0.5 0.5 0.5',
         rotation: '0 180 0',
-        position: '0 -2 -10',
+        //position: '0 -2 -10',
         info: 'Magnemite, Lv. 5, HP 10/10',
     },
     {
         url: './assets/articuno/scene.gltf',
         scale: '0.2 0.2 0.2',
         rotation: '0 180 0',
-        position: '0 -10 -20',
+        //position: '0 -10 -20',
         info: 'Articuno, Lv. 80, HP 100/100',
     },
     {
         url: './assets/dragonite/scene.gltf',
         scale: '0.08 0.08 0.08',
         rotation: '0 180 0',
-        position: '5 15 0',
+        //position: '5 15 0',
         info: 'Dragonite, Lv. 99, HP 150/150',
     },
 
@@ -72,13 +72,14 @@ function renderPlaces(places, btn) {
         let longitude = place.location.lng;
 
         let model = document.createElement('a-entity');
-        model.setAttribute('gps-entity-place', `latitude: ${latitude}; longitude: ${longitude};`);
-        
+        model.setAttribute('gps-entity-place',`latitude: ${latitude}; longitude: ${longitude};`);
+        model.setAttribute('position', '0 0 -20');
+
         setModel(models[modelIndex], model);
 
         model.setAttribute('animation-mixer', '');
 
-        //document.querySelector('button[data-action="change"]').addEventListener('click', function(){
+        document.querySelector('button[data-action="change"]').addEventListener('click', function(){
         btn.addEventListener('click', function(){
            var entity = document.querySelector('[gps-entity-place]');
            modelIndex++;
